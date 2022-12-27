@@ -5,7 +5,20 @@ module.exports = {
   addToCart,
   setItemQtyInCart,
   checkout,
+  getAllForUser,
+  deleteOrder,
 };
+
+async function deleteOrder(req, res){
+  await Order.findByIdAndDelete(req.params.id);
+  const orders = await Order.find({user: req.user._id, isPaid: true}).sort('-updatedAt');
+  res.json(orders);
+}
+
+async function getAllForUser(req, res) {
+  const orders = await Order.find({user: req.user._id, isPaid: true}).sort('-updatedAt');
+  res.json(orders);
+}
 
 async function cart(req, res) {
   const cart = await Order.getCart(req.user._id);
