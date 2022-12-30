@@ -41,6 +41,8 @@ export default function ClothingOrderDetail({ order, handleChangeQty, handleChec
               <span>{order.totalQty}</span>
               <span className="right">${order.orderTotal.toFixed(2)}</span>
             </section>
+            <br />
+            <textarea name="order_notes" placeholder="Please include your exact measurements for bust, height, waist, and hip in either centimeters or inches to ensure you get an item perfectly molded to your body. Send measurements to inspiredbywomen@gmail.com" cols="25" rows="15"></textarea>
           </>
           :
           <div className="hungry">Added Clothing Shown Here</div>
